@@ -6,7 +6,6 @@ def clean_sequence(seq):
     cleaned = "".join([base for base in seq if base in valid_bases])
     return cleaned
 
-# --- User Input ---
 original = input("Enter original DNA sequence: ")
 mutated = input("Enter mutated DNA sequence: ")
 
@@ -17,21 +16,17 @@ print("\n--- CLEANED SEQUENCES ---")
 print("Original:", original)
 print("Mutated:", mutated)
 def find_mutation(original, mutated):
-    # If lengths are same → substitution
     if len(original) == len(mutated):
         for i in range(len(original)):
             if original[i] != mutated[i]:
                 return ("substitution", i, original[i], mutated[i])
         return ("no mutation", None, None, None)
-
-    # If mutated is longer → insertion
     elif len(mutated) > len(original):
         for i in range(len(original)):
             if original[i] != mutated[i]:
                 return ("insertion", i, "-", mutated[i])
         return ("insertion", len(original), "-", mutated[len(original)])
 
-    # If mutated is shorter → deletion
     else:  
         for i in range(len(mutated)):
             if original[i] != mutated[i]:
@@ -47,7 +42,6 @@ print("Original base:", old_base)
 print("Mutated base:", new_base)
 
 def translate_dna_to_protein(dna):
-    # Trim DNA length so it's divisible by 3 (avoid errors)
     trim_len = len(dna) - (len(dna) % 3)
     dna = dna[:trim_len]
     protein = str(Seq(dna).translate())
@@ -80,19 +74,12 @@ def classify_mutation(mutation_type, aa_original, aa_new):
     if mutation_type == "no mutation":
         return "No impact"
 
-    # Stop codon mutation
     if aa_new == "*" or aa_original == "*":
-        return "Nonsense mutation (protein ends early)"
-
-    # No amino acid change
+        return "Nonsense mutation (protein ends early)
     if aa_original == aa_new:
         return "Silent mutation (no protein change)"
-
-    # Amino acid changed
     if aa_original != aa_new and aa_original is not None:
         return "Missense mutation (protein structure/function may change)"
-
-    # Insertions or deletions that change length
     return "Frameshift mutation (protein drastically altered)"
 
 impact = classify_mutation(mutation_type, aa_original, aa_new)
@@ -102,7 +89,6 @@ print("Impact:", impact)
 
 import os
 
-# Create outputs folder if not exists
 if not os.path.exists("outputs"):
     os.makedirs("outputs")
 
@@ -128,3 +114,4 @@ with open(report_path, "w", encoding="utf-8") as report:
 
 print("\nReport generated successfully!")
 print(f"File saved at: {report_path}")
+
