@@ -1,0 +1,22 @@
+=== DNA MUTATION ANALYSIS REPORT ===
+
+Original DNA: ATGCATGC
+Mutated DNA:  ATGGATGC
+
+--- Mutation Details ---
+Type: substitution
+DNA Position: 3
+Base Change: C → G
+
+--- Protein Translation ---
+Original Protein: MH
+Mutated Protein:  MD
+
+--- Amino Acid Change ---
+Position: 1
+AA Change: H → D
+
+--- Biological Impact ---
+Missense mutation (protein structure/function may change)
+
+=== End of Report ===
